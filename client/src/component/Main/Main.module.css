@@ -1,0 +1,16 @@
+.Container{
+    margin-top: 20px;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-left:20px;
+}
+.lineBreak{
+    flex-basis: auto;
+    height: 0;
+}
+@media (max-width: 800px) {
+    .Container{
+        
+    }
+}

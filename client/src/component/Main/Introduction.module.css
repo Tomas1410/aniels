@@ -1,0 +1,51 @@
+div.Container{
+    flex-grow: 2;
+    flex-shrink: 4;
+    width: 60%;
+
+}
+
+.imageStyle{
+    height: 200px;
+    width: 90%;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.Title{
+    font-size: 2em;
+    font-weight:700;
+    text-align: center;
+}
+.Content{
+    font-size: 1em;
+    font-weight:400;
+    
+}
+p{
+    
+}
+
+button {
+    background-color: #008CBA; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+   
+   
+  }
+  button:hover{
+      cursor:pointer;
+  }
+  @media (max-width: 800px) {
+    .Container{
+
+        
+    }
+  
+  
+    }

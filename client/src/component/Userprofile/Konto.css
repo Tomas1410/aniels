@@ -1,0 +1,39 @@
+.Konto{
+    padding-top: 10px;
+    
+}
+.nazwaKonta{
+    font-size: 30px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.avatar_konto{
+    border:1px solid;
+    border-radius: 70%;
+    width:450px;
+    
+}
+.opisKonta{
+    
+}
+.edytuj{
+    color:greenyellow;
+    background-color: grey;
+    float: left;
+    margin-top: 15%;
+    
+}
+.zapisz{
+    color:greenyellow;
+    background-color: grey;
+    float: right;
+    margin-top: 15%;
+}
+
+
+@media (max-width: 800px) {
+.avatar_konto{margin-left:-10%;}
+
+
+    
+}

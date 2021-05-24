@@ -1,0 +1,22 @@
+.Rec{
+float:left;
+margin-left: 3%;
+}
+.Zapchaj{color:white;}
+
+.Recommends{text-align :center;}
+h3{text-align: center;}
+button.Rec{
+margin: 0 auto;
+margin-left: 26%;
+font-size: 20px;
+
+}
+.Container{
+    flex-basis: 100%;
+}
+.title{
+    display: block;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}

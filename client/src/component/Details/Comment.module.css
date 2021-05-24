@@ -1,0 +1,44 @@
+.author{
+    margin-top: 2rem;
+    text-align: left;
+    border:2px solid greenyellow;
+    padding: 10px 10px 10px 10px;
+}
+.author > p{
+    text-align: left;
+}
+.date{
+    color: #00ff00;
+    font-weight: 600;
+    float: right;
+}
+
+/* *{
+    text-align: center;
+}
+
+.details{
+    width: 720px;
+    margin: auto;
+}
+
+span{
+    padding: 15px;
+    
+}
+.description{
+    
+}
+.addComents{
+    margin-bottom:10px;
+}
+.whosAdd{
+    float:left;
+    color: green;
+}
+form{
+    text-align: left;
+}
+input{
+    text-align: left;
+} */

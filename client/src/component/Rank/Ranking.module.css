@@ -1,0 +1,70 @@
+.containerStyle{
+  padding:0 5% 0 5%;
+  margin:0;
+}
+.buttonClass{
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  display: block;
+  width: 20%;
+}
+.h1{
+    width: 100%;
+    float:"left";
+}
+.table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  .searchLabel{
+    text-align: left;
+    font-size: large;
+    font-weight: 500;
+    display: block;
+    float: left;
+    width: 100%;
+}
+ .searchbar{
+      float: left;
+      width: 30%;
+      font-size: large;
+      text-align: left;
+  }
+  .searchButton{
+      font-size: large;
+      align-items: center;
+      width: 10%;
+      float:left;
+      background-color: indigo;
+      background-color: #4CAF50;
+      color: white;
+      padding: 0px 5px 5px 5px;
+      margin: 0 8px 8px;
+      display: block; 
+  }
+  .ratingValue::after{
+    content: " / 5";
+  }
+  .commentsQuantityValue::after{
+    color: #4CAF50;
+  }
+
+
+  @media (max-width: 800px) {
+    .buttonClass{width: 100%;}
+  
+  
+    }
