@@ -22,11 +22,8 @@ div.Container{
     font-weight:400;
     
 }
-p{
-    
-}
 
-button {
+.btn {
     background-color: #008CBA; 
     border: none;
     color: white;
@@ -38,14 +35,7 @@ button {
    
    
   }
-  button:hover{
+  .btn:hover{
       cursor:pointer;
   }
-  @media (max-width: 800px) {
-    .Container{
 
-        
-    }
-  
-  
-    }

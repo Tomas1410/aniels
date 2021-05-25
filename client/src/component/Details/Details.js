@@ -15,6 +15,13 @@ function Details({ przepis, fetchRecipe, user, pushComment }) {
     const [comment, setComment] = useState()
     const handleComment = (e) => setComment(e.target.value)
 
+    const newLineText = (item) => {
+
+        const newText = item.split('\n').map(str => <li style={{ 'display': 'list-item' }}>{str}</li>);
+
+        return newText;
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault()
         const content = {
@@ -44,7 +51,7 @@ function Details({ przepis, fetchRecipe, user, pushComment }) {
 
             <h1 className="details"> Składniki </h1>
             <ul>
-                {JSON.stringify(przepis.skladniki)}
+                {przepis.skladniki ? (newLineText(przepis.skladniki)) : ('')}
 
 
 
