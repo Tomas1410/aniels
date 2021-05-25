@@ -28,17 +28,24 @@ function Navigacja({ auth }) {
   const { isAuthenticated, user } = auth
 
   const authLinks = (
-    <Nav className="ml-sm-1">
-      <Nav.Link href="/konto" >{user ? (<b>cześć {user.name}</b>) : ''}</Nav.Link>
-      <Logout />
-
-    </Nav>
+    <React.Fragment>
+      <Nav className="ml-auto">
+        <Nav.Link href="/dodaj-przepis">Dodaj przepis</Nav.Link>
+      </Nav>
+      <Nav className="ml-sm-1">
+        <Nav.Link href="/konto" >{user ? (<b>cześć {user.name}</b>) : ''}</Nav.Link>
+        <Logout />
+      </Nav>
+    </React.Fragment>
   )
   const guestLinks = (
+
     <Nav className="ml-sm-1">
       <Nav.Link href="/login">Login</Nav.Link>
       <Nav.Link href="/rejestracja">Rejestracja</Nav.Link>
     </Nav>
+
+
   )
 
   return (
@@ -69,7 +76,7 @@ function Navigacja({ auth }) {
               {isAuthenticated ? <Nav.Link href="Ulubiony"> Ulubiony</Nav.Link> : ''}
 
               <Nav.Link href="/generator">Generator</Nav.Link>
-              <Nav.Link href="/dodaj-przepis">Dodaj przepis</Nav.Link>
+
             </Nav>
             {isAuthenticated ? authLinks : guestLinks}
 
