@@ -30,11 +30,20 @@ const recipeRouter = require('./routes/recipe');
 const userRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
 const detailsRouter = require('./routes/details');
+const generatorRouter = require('./routes/generator');
+const rankingRouter = require('./routes/ranking');
+const ulubioneRouter = require('./routes/ulubione');
+
+
 
 app.use('/recipes', recipeRouter);
 app.use('/rejestracja', userRouter);
 app.use('/Login', authRouter);
 app.use('/details', detailsRouter);
+app.use('/generator', generatorRouter);
+app.use('/ranking', rankingRouter);
+app.use('/ulubione', ulubioneRouter);
+
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'))
