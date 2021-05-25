@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import LoginStyles from './Rejestracja.module.css'
+import RejestracjaStyles from './Rejestracja.module.css'
 import { connect } from 'react-redux'
 import { register } from '../../actions/authAction'
 
@@ -32,7 +32,7 @@ const Rejestracja = ({ register }) => {
 
     return (
         <React.Fragment>
-            <h1 className={LoginStyles.logujSieHamie}>Zarejestruj się</h1>
+            <h1 className={RejestracjaStyles.logujSieHamie}>Zarejestruj się</h1>
             <form onSubmit={handleSubmit}>
 
                 <div className="container">
@@ -45,7 +45,7 @@ const Rejestracja = ({ register }) => {
                     <label htmlFor="password"><b>Hasło</b></label>
                     <input type="password" placeholder="Wprowadz haslo" name="password" onChange={handleChangePassword} />
 
-                    <button type="submit" className={LoginStyles.buttonClass} >Zarejestruj się </button>
+                    <button type="submit" className={RejestracjaStyles.buttonClass} >Zarejestruj się </button>
 
                 </div>
 

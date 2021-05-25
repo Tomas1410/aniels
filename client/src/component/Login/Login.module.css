@@ -18,6 +18,8 @@ input[type=email], input[type=password] {
 
 /* Set a style for all buttons */
 .buttonClass {
+  background-color: #4CAF50;
+  color: white;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
