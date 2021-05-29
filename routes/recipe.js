@@ -3,15 +3,34 @@ let Recipe = require('../models/recipe.model');
 const auth = require('../middleware/auth')
 const multer = require('multer')
 
-const storageImg = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, './client/public/assets')
-  },
-  filename: (req, file, cb) => {
+require('dotenv').config();
 
-    cb(null, Date.now() + "--" + file.originalname);
-  }
-})
+let storageImg;
+
+if (process.env.NODE_ENV === 'production') {
+  storageImg = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, './client/build/assets')
+    },
+    filename: (req, file, cb) => {
+
+      cb(null, Date.now() + "--" + file.originalname);
+    }
+  })
+}
+else {
+  storageImg = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, './client/public/assets')
+    },
+    filename: (req, file, cb) => {
+
+      cb(null, Date.now() + "--" + file.originalname);
+    }
+  })
+}
+
+
 const upload = multer({ storage: storageImg }); // or simply { dest: 'uploads/' }
 
 
