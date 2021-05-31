@@ -4,7 +4,7 @@ export default function Comment(props) {
   return (
     <div className={CommentStyle.author}>
       <span className={CommentStyle.header}>
-        <b>{props.comment.author}</b> <b className={CommentStyle.date}>20.05.2021</b>
+        <b>{props.comment.author}</b> <b className={CommentStyle.date}>{props.comment.createdAt}</b>
       </span>
       <p>{props.comment.treść}</p>
     </div>

@@ -40,18 +40,11 @@ export default function Wyszukiwarka() {
                 <Button variant="success" type="submit">Szukaj</Button>
             </Form>
             <Grid container spacing={3} padding={2}>
-                <Grid item xl={3} lg={3} md={3} sm={4} xs={12}>
+                {/* mapowanie wynikow wyszukiwania */}
+                {/* <Grid item xl={3} lg={3} md={3} sm={4} xs={12}>
                     <CardComponent />
                 </Grid>
-                <Grid item xl={3} lg={3} md={3} sm={4} xs={12}>
-                    <CardComponent />
-                </Grid>
-                <Grid item xl={3} lg={3} md={3} sm={4} xs={12}>
-                    <CardComponent />
-                </Grid>
-                <Grid item xl={3} lg={3} md={3} sm={4} xs={12}>
-                    <CardComponent />
-                </Grid>
+                 */}
             </Grid>
         </div>
     )

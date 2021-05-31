@@ -10,9 +10,14 @@ import lazania from '../../static/recipes/lazania.png';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import Loader from '../Main/Loader';
+import { connect } from 'react-redux';
+import { addFavourite, deleteFavourite } from '../../actions/recipesActions';
 
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
-
+import axios from 'axios';
+import FavouriteDeleteForm from './FavouriteDeleteForm';
+import FavouriteAddForm from './FavouriteAddForm';
 
 const useStyles = makeStyles({
   root: {
@@ -24,34 +29,49 @@ const useStyles = makeStyles({
   },
 });
 export default function CardComponent(props) {
-
-
-
   const classes = useStyles();
-  return props ? (
-    <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={'assets/' + props.przepis.img}
-          title={props.przepis.tytul}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            {props.przepis.tytul}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {props.przepis.krotki_opis}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
 
-      <CardActions>
-        <Link to={'details/' + props.przepis._id}>Przeczytaj wiecej </Link>
+  return (
+    <React.Fragment>
+      <Card className={classes.root}>
+        <CardActionArea>
+          <CardMedia
+            className={classes.media}
+            image={'assets/' + props.przepis.img}
+            title={props.przepis.tytul}
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+              {props.przepis.tytul}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {props.przepis.krotki_opis}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
 
-      </CardActions>
-    </Card >
-  ) : (<Loader />)
+        <CardActions>
+          <Link to={'details/' + props.przepis._id}>Przeczytaj wiecej </Link>
+          {/* <form onSubmit={handleFavouriteAdd}>
+            <button type="submit">
+              {props.user && props.user.name ?
+                (props.przepis.ulubione.includes(props.user.name) ?
+                  (<FavoriteIcon></FavoriteIcon>) : (<FavoriteBorder></FavoriteBorder>))
+                : ('')}
+            </button>
+          </form> */}
 
+
+        </CardActions>
+      </Card >
+      {props.user && props.user.name ? (props.przepis.ulubione.includes(props.user.name) ?
+        <FavouriteDeleteForm username={props.user.name} przepisId={props.przepis._id} /> : <FavouriteAddForm username={props.user.name} przepisId={props.przepis._id} />
+      ) : ('')
+      }
+    </React.Fragment>
+  )
 }
+
+
+
 

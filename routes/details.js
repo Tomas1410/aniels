@@ -4,7 +4,7 @@ const auth = require('../middleware/auth')
 
 
 router.get('/', (req, res) => {
-    res.status(404).json("Page doesn't exists")
+    res.redirect('../');
 })
 
 router.get('/:przepisId', (req, res) => {

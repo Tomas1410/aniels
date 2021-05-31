@@ -1,4 +1,4 @@
-import { FETCH_RECIPES, FETCH_RECIPE, PUSH_RECIPE_FAILED, PUSH_RECIPE_SUCCESS, PUSH_COMMENT_SUCCES, PUSH_COMMENT_FAILED } from "./types";
+import { FETCH_RECIPES, FETCH_RECIPE, PUSH_RECIPE_FAILED, PUSH_RECIPE_SUCCESS, PUSH_COMMENT_SUCCES, PUSH_COMMENT_FAILED, FAVOURITE_CLICKED_FAILED, FAVOURITE_UNCLICKED_SUCCESS, FAVOURITE_UNCLICKED_FAILED, FAVOURITE_CLICKED_SUCCESS } from "./types";
 import { returnErrors } from "./errorAction";
 import axios from "axios";
 import { tokenConfig } from './authAction'
@@ -65,5 +65,41 @@ export const pushComment = (komentarz, przepisId) => (dispatch, getState) => {
       })
     })
 };
+export const addFavourite = (przepisId, username) => (dispatch, getState) => {
+
+  const body = JSON.stringify({ user: username })
+
+  axios.patch('/ulubione/dodaj-ulubiony/' + przepisId, body, tokenConfig(getState))
+    .then(res => dispatch({
+      type: FAVOURITE_CLICKED_SUCCESS,
+      isClicked: true,
+      msg: res.data
+    }))
+    .catch(err => {
+      dispatch({
+        type: FAVOURITE_CLICKED_FAILED,
+        msg: "Error while favourite click:" + err
+      })
+    })
+
+}
+export const deleteFavourite = (przepisId, username) => (dispatch, getState) => {
+
+  const body = JSON.stringify({ user: username })
+
+  axios.patch('/ulubione/usun-ulubiony/' + przepisId, body, tokenConfig(getState))
+    .then(res => dispatch({
+      type: FAVOURITE_UNCLICKED_SUCCESS,
+      isClicked: false,
+      msg: res.data
+    }))
+    .catch(err => {
+      dispatch({
+        type: FAVOURITE_UNCLICKED_FAILED,
+        msg: "Error while favourite unclick:" + err
+      })
+    })
+
+}
 
 

@@ -23,10 +23,9 @@ const useStyles = makeStyles((theme) => ({
 export default function Ulubiony() {
   const classes = useStyles();
   return (
-
     <React.Fragment>
       <div className={classes.root}>
- <h1>Ulubione przepisy</h1>
+        <h1>Ulubione przepisy</h1>
         <Grid container spacing={2}>
           <Grid item xl={3} lg={4} md={3} sm={3} xs={12}>
             <CardComponent />
@@ -46,9 +45,9 @@ export default function Ulubiony() {
           <Grid item xl={3} lg={4} md={3} sm={3} xs={12}>
             <CardComponent />
           </Grid>
-         
-         
-         
+
+
+
         </Grid>
       </div>
     </React.Fragment>

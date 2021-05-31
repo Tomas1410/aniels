@@ -22,7 +22,8 @@ const recipeSchema = new Schema({
   pora: { type: String, required: true },
   typ: { type: String, required: true },
   czas_wykonania: { type: String, required: true },
-  zlozonosc: { type: String, required: true }
+  zlozonosc: { type: String, required: true },
+  ulubione: { type: Array, required: true }
 }, {
   timestamps: true,
 });

@@ -12,48 +12,36 @@ import Loader from '../Main/Loader';
 
 
 
-function Recipes({ przepisy, fetchRecipes }) {
+function Recipes({ przepisy, fetchRecipes, user, isCLicked }) {
 
 
   useEffect(() => {
     fetchRecipes();
-  }, [])
+  }, [isCLicked])
 
-  // return przepisy ? (przepisy.map(przepis => <p>{przepis.tytul}</p>)) : (<Loader />)
-  // <Grid container spacing={3}>
-  //         <Grid item xl={3} lg={3} md={3} sm={4} xs={12}>
-  //           <CardComponent />
-  //         </Grid>
-
-  // </Grid>
   return przepisy ? (
     <Grid container spacing={3}>
       {przepisy.map(przepis =>
         <Grid key={przepis._id} item xl={3} lg={3} md={3} sm={4} xs={12}>
-          <CardComponent przepis={przepis} />
+          <CardComponent przepis={przepis} user={user} />
         </Grid>
       )}
     </Grid>) : (<Loader />)
-
-
-  // return przepisy[11] ? (
-  //   < CardComponent przepis={przepisy[11]} />) : (<Loader />)
-
-
-
-
 }
 
 
 
 Recipes.propTypes = {
   przepisy: PropTypes.array.isRequired,
-  fetchRecipes: PropTypes.func.isRequired
+  fetchRecipes: PropTypes.func.isRequired,
+  user: PropTypes.object
 }
 
 const mapStateToProps = state => {
   return {
-    przepisy: state.main.przepisy
+    przepisy: state.main.przepisy,
+    isCLicked: state.main.favouriteClicked,
+    user: state.auth.user
   }
 }
 const mapDispatchToProps = dispatch => {

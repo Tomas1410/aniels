@@ -9,7 +9,7 @@ import PropTypes from 'prop-types'
 import { useParams } from "react-router-dom"
 import Loader from '../Main/Loader'
 
-function Details({ przepis, fetchRecipe, user, pushComment }) {
+function Details({ przepis, fetchRecipe, user, pushComment, komentarz }) {
 
     const { przepisId } = useParams();
     const [comment, setComment] = useState()
@@ -31,12 +31,12 @@ function Details({ przepis, fetchRecipe, user, pushComment }) {
             }
         }
         pushComment(content, przepisId)
-        window.location.reload();
+        // window.location.reload();
     }
 
     useEffect(() => {
         fetchRecipe(przepisId);
-    }, [])
+    }, [komentarz])
 
     return (
         <div className={DetailsStyles.details}>
@@ -85,13 +85,15 @@ Details.propTypes = {
     fetchRecipe: PropTypes.func.isRequired,
     przepisId: PropTypes.string.isRequired,
     user: PropTypes.object,
-    pushComment: PropTypes.func
+    pushComment: PropTypes.func,
+    komentarz: PropTypes.object
 }
 
 const mapStateToProps = state => {
     return {
         przepis: state.main.przepis,
-        user: state.auth.user
+        user: state.auth.user,
+        komentarz: state.main.dodanyKomentarz
     }
 }
 // const mapDispatchToProps = () => (id, dispatch) => {
