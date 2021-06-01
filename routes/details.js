@@ -8,7 +8,6 @@ router.get('/', (req, res) => {
 })
 
 router.get('/:przepisId', (req, res) => {
-
     Recipe.findById(req.params.przepisId)
         .then(recipe => res.json(recipe))
         .catch(err => res.status(404).json('Error during fetch: ' + err));

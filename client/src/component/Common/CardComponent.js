@@ -60,14 +60,14 @@ export default function CardComponent(props) {
                 : ('')}
             </button>
           </form> */}
-
+          {props.user && props.user.name ? (props.przepis.ulubione.includes(props.user.name) ?
+            <FavouriteDeleteForm username={props.user.name} przepisId={props.przepis._id} /> : <FavouriteAddForm username={props.user.name} przepisId={props.przepis._id} />
+          ) : ('')
+          }
 
         </CardActions>
       </Card >
-      {props.user && props.user.name ? (props.przepis.ulubione.includes(props.user.name) ?
-        <FavouriteDeleteForm username={props.user.name} przepisId={props.przepis._id} /> : <FavouriteAddForm username={props.user.name} przepisId={props.przepis._id} />
-      ) : ('')
-      }
+
     </React.Fragment>
   )
 }

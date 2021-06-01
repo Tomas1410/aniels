@@ -67,7 +67,7 @@ export const pushComment = (komentarz, przepisId) => (dispatch, getState) => {
 };
 export const addFavourite = (przepisId, username) => (dispatch, getState) => {
 
-  const body = JSON.stringify({ user: username })
+  const body = { name: username }
 
   axios.patch('/ulubione/dodaj-ulubiony/' + przepisId, body, tokenConfig(getState))
     .then(res => dispatch({
