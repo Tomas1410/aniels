@@ -9,7 +9,7 @@ import { addFavourite } from '../../actions/recipesActions'
 export default function FavouriteAddForm(props) {
 
     const dispatch = useDispatch();
-    const [isClicked, setClicked] = useState(false)
+    const [Clicked, setClicked] = useState(false)
 
 
 
@@ -22,7 +22,7 @@ export default function FavouriteAddForm(props) {
 
     return (
         <button onClick={handleFavouriteAdd}>
-            {isClicked === true ? (<FavoriteIcon></FavoriteIcon>) : (<FavoriteBorder></FavoriteBorder>)}
+            {Clicked === true ? (<FavoriteIcon></FavoriteIcon>) : (<FavoriteBorder></FavoriteBorder>)}
         </button>
     )
 }

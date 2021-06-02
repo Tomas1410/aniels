@@ -1,20 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
+import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { deleteFavourite } from '../../actions/recipesActions';
 
+export default function FavouriteDeleteForm(props) {
 
-function FavouriteDeleteForm(props, { deleteFavourite }) {
-    const handleFavouriteDelete = (e) => {
-        e.preventDefault()
-        console.log('usunieto z ulubionych')
-        deleteFavourite(props.przepisId, props.username)
+    const dispatch = useDispatch();
+    const [Clickeded, setClicked] = useState(false)
+
+    const handleFavouriteDelete = () => {
+
+        setClicked(prevValue => !prevValue)
+        console.log('przepis id:', props.przepisId, '\n username:', props.username)
+        dispatch(deleteFavourite(props.przepisId, props.username))
 
     }
     return (
-        <button type="submit" onClick={handleFavouriteDelete}>
-            <FavoriteIcon></FavoriteIcon>
+        <button onClick={handleFavouriteDelete}>
+            {Clickeded === true ? (<FavoriteBorder></FavoriteBorder>) : (<FavoriteIcon></FavoriteIcon>)}
         </button>
     )
 }
-export default connect(null, { deleteFavourite })(FavouriteDeleteForm);
+

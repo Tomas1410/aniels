@@ -85,7 +85,7 @@ export const addFavourite = (przepisId, username) => (dispatch, getState) => {
 }
 export const deleteFavourite = (przepisId, username) => (dispatch, getState) => {
 
-  const body = JSON.stringify({ user: username })
+  const body = JSON.stringify({ name: username })
 
   axios.patch('/ulubione/usun-ulubiony/' + przepisId, body, tokenConfig(getState))
     .then(res => dispatch({

@@ -7,7 +7,7 @@ import Login from '../Login/Login'
 import Logout from '../Login/Logout'
 import Ranking from '../Rank/Ranking'
 import Konto from '../Userprofile/Konto'
-import Ulubiony from '../Favourite/Ulubiony'
+import Ulubione from '../Favourite/Ulubione'
 import Rejestracja from '../Register/Rejestracja'
 import Wyszukiwarka from './Wyszukiwarka'
 import Generator from '../Generator/generator'
@@ -69,7 +69,7 @@ function Navigacja({ auth }) {
             <Nav.Link href="/przepisy">Przepisy</Nav.Link>
             <Nav.Link href="/ranking">Ranking</Nav.Link>
             {/* <Nav.Link href="konto">Konto</Nav.Link> */}
-            {isAuthenticated ? <Nav.Link href="Ulubiony"> Ulubiony</Nav.Link> : ''}
+            {isAuthenticated ? <Nav.Link href="/ulubione"> Ulubione</Nav.Link> : ''}
 
             <Nav.Link href="/generator">Generator</Nav.Link>
 
@@ -112,7 +112,7 @@ function Navigacja({ auth }) {
           <Konto />
         </Route>
         <Route path="/ulubione">
-          <Ulubiony />
+          <Ulubione />
         </Route>
         <Route path="/wyszukiwarka">
           <Wyszukiwarka />
