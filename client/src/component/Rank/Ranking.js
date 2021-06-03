@@ -1,17 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import RankingStyles from './Ranking.module.css'
-
+import Loader from '../Main/Loader'
+import { fetchRecipes } from '../../actions/recipesActions'
+import { connect } from 'react-redux'
 let malejaceOceny = true;
 let malejaceKomentarze = true;
 
 
-function sortTableByRatings(){
+function sortTableByRatings() {
   var table, rows, switching, i, x, y, shouldSwitch;
   table = document.getElementById("mytable");
-  malejaceOceny =! malejaceOceny;
+  malejaceOceny = !malejaceOceny;
   switching = true;
-  while (switching)
-  {
+  while (switching) {
     switching = false;
     rows = table.rows;
     for (i = 1; i < (rows.length - 1); i++) {
@@ -22,7 +23,7 @@ function sortTableByRatings(){
       y = rows[i + 1].getElementsByClassName(RankingStyles.ratingValue)[0];
       //check if the two rows should switch place:
       if (malejaceOceny) {
-        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+        if (Number(x.innerHTML) < Number(y.innerHTML)) {
           //if so, mark as a switch and break the loop:
           shouldSwitch = true;
           break;
@@ -30,7 +31,7 @@ function sortTableByRatings(){
           shouldSwitch = false;
         }
       } else {
-        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+        if (Number(x.innerHTML) > Number(y.innerHTML)) {
           //if so, mark as a switch and break the loop:
           shouldSwitch = true;
           break;
@@ -43,17 +44,16 @@ function sortTableByRatings(){
       rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
       switching = true;
     }
-    
+
   }
-  
+
 }
-function sortTableByComments(){
+function sortTableByComments() {
   var table, rows, switching, i, x, y, shouldSwitch;
   table = document.getElementById("mytable");
-  malejaceKomentarze =! malejaceKomentarze;
+  malejaceKomentarze = !malejaceKomentarze;
   switching = true;
-  while (switching)
-  {
+  while (switching) {
     switching = false;
     rows = table.rows;
     for (i = 1; i < (rows.length - 1); i++) {
@@ -64,7 +64,7 @@ function sortTableByComments(){
       y = rows[i + 1].getElementsByClassName(RankingStyles.commentsQuantityValue)[0];
       //check if the two rows should switch place:
       if (malejaceKomentarze) {
-        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+        if (Number(x.innerHTML) < Number(y.innerHTML)) {
           //if so, mark as a switch and break the loop:
           shouldSwitch = true;
           break;
@@ -72,7 +72,7 @@ function sortTableByComments(){
           shouldSwitch = false;
         }
       } else {
-        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+        if (Number(x.innerHTML) > Number(y.innerHTML)) {
           //if so, mark as a switch and break the loop:
           shouldSwitch = true;
           break;
@@ -85,57 +85,59 @@ function sortTableByComments(){
       rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
       switching = true;
     }
-    
+
   }
-  
+
 }
 
-export default function Ranking() {
-  
-  
-    return (
-        <div className={RankingStyles.containerStyle}>
-           <h1 className={RankingStyles.h1}>Ranking przepisów</h1>
-            <button className={RankingStyles.buttonClass} onClick={sortTableByRatings}>Najwyżej oceniane</button>
-            <button className={RankingStyles.buttonClass} onClick={sortTableByComments}>Najczęściej komentowane</button>
-         
-            <table className={RankingStyles.table} id="mytable">
-            <tr>
-              <th>Nazwa dania</th>
-              <th>Ocena</th>
-              <th>Ilość komentarzy</th>
-            </tr>
-            <tr>
-              <td>Spaghetti Bolognese</td>
-              <td className={RankingStyles.ratingValue}>5</td>
-              <td className={RankingStyles.commentsQuantityValue}>51</td>
-            </tr>
-            <tr>
-              <td>Lasagne bolognese</td>
-              <td className={RankingStyles.ratingValue}>5</td>
-              <td className={RankingStyles.commentsQuantityValue}>33</td>
-            </tr>
-            <tr>
-              <td>Pieczony kurczak z ziemniakami</td>
-              <td className={RankingStyles.ratingValue}>4</td>
-              <td className={RankingStyles.commentsQuantityValue}>11</td>
-            </tr>
-            <tr>
-              <td>Zrazy kasztelańskie</td>
-              <td className={RankingStyles.ratingValue}>4.5</td>
-              <td className={RankingStyles.commentsQuantityValue}>12</td>
-            </tr>
-            <tr>
-              <td>Szybka zalewajka</td>
-              <td className={RankingStyles.ratingValue}>3.5</td>
-              <td className={RankingStyles.commentsQuantityValue}>14</td>
-            </tr>
-            <tr>
-              <td>Parówki w cieście francuskim z warzywami</td>
-              <td className={RankingStyles.ratingValue}>2.5</td>
-              <td className={RankingStyles.commentsQuantityValue}>18</td>
-            </tr>
-            </table>
-            </div>
-    )
+const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
+
+const comparer = (idx, asc) => (a, b) => ((v1, v2) =>
+  v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
+)(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
+
+
+document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() => {
+  const table = th.closest('table');
+  Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
+    .sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
+    .forEach(tr => table.appendChild(tr));
+})));
+
+function Ranking({ fetchRecipes, przepisy }) {
+
+
+  useEffect(() => {
+    fetchRecipes();
+  }, [])
+
+  return (
+    <div className={RankingStyles.containerStyle}>
+      <h1 className={RankingStyles.h1}>Ranking przepisów</h1>
+      <button className={RankingStyles.buttonClass} onClick={sortTableByRatings}>Najbardziej ulubione</button>
+      <button className={RankingStyles.buttonClass} onClick={sortTableByComments}>Najczęściej komentowane</button>
+
+      <table className={RankingStyles.table} id="mytable">
+        <tr>
+          <th>Nazwa dania</th>
+          <th>Najbardziej ulubione</th>
+          <th>Ilość komentarzy</th>
+        </tr>
+        {przepisy ? (przepisy.map(przepis =>
+          <tr>
+            <td>{przepis.tytul}</td>
+            <td className={RankingStyles.ratingValue}>{Object.keys(przepis.ulubione).length}</td>
+            <td className={RankingStyles.commentsQuantityValue}>{Object.keys(przepis.komentarze).length}</td>
+          </tr>)) : (<Loader />)}
+
+      </table>
+    </div >
+  )
 }
+const mapStateToProps = state => {
+  return {
+    przepisy: state.main.przepisy
+  }
+}
+
+export default connect(mapStateToProps, { fetchRecipes })(Ranking);

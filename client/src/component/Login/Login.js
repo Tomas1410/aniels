@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react'
+import React, { useState } from 'react'
 import LoginStyles from './Login.module.css'
 import img from '../../static/login/maklowicz.jpg'
 import { connect } from 'react-redux'

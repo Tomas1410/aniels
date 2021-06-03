@@ -6,16 +6,9 @@ const auth = require('../middleware/auth')
 
 router.post('/', (req, res) => {
 
-    console.log(req.body)
+    let czas = req.body.czas.replace(' min', '')
 
-    const title = req.body.tytul;
-    const pora = req.body.pora;
-    const typ = req.body.typ;
-    const czas = req.body.czas;
-    const zlozonosc = req.body.zlozonosc;
-
-
-    Recipe.find({ pora: req.body.pora, typ: req.body.typ, czas_wykonania: req.body.czas, zlozonosc: req.body.zlozonosc })
+    Recipe.find({ pora: req.body.pora, typ: req.body.typ, czas_wykonania: czas }).select('tytul krotki_opis pora typ czas img')
         .then((document) => res.json(document))
         .catch(err => res.status(400).json('Error: ' + err));
 });

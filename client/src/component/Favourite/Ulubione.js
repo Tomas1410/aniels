@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import './Ulubiony.module.css';
 import CardComponent from '../Common/CardComponent'
 import Grid from '@material-ui/core/Grid';

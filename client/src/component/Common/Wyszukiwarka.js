@@ -1,6 +1,5 @@
 import React from 'react'
 import { Form, Col, Button } from 'react-bootstrap';
-import CardComponent from './CardComponent';
 import Grid from '@material-ui/core/Grid';
 import 'bootstrap/dist/css/bootstrap.min.css';
 

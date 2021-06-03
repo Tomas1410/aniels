@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import HotfoodStyles from "./Hotfood.module.css";
 import CardMedia from "@material-ui/core/CardMedia";
-import lazania from "../../static/recipes/lazania.png";
 
 export default class Hotfood extends Component {
   constructor(props) {

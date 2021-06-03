@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import RecommendStyles from './Recommend.module.css';
 
 import Loader from './Loader'

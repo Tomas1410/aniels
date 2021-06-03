@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import lazania from '../../static/recipes/lazania.png'
 import CardMedia from '@material-ui/core/CardMedia';
 import DetailsStyles from './Details.module.css';
 import Comment from './Comment'

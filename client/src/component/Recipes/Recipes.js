@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import './Recipes.css';
 import CardComponent from '../Common/CardComponent'
-import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux'
 import { fetchRecipes } from '../../actions/recipesActions'

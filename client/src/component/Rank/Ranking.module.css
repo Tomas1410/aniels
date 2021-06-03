@@ -56,7 +56,7 @@
       display: block; 
   }
   .ratingValue::after{
-    content: " / 5";
+    content: " osób ma przepis w ulubionych";
   }
   .commentsQuantityValue::after{
     color: #4CAF50;

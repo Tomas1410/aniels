@@ -5,17 +5,10 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import lazania from '../../static/recipes/lazania.png';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
-import Loader from '../Main/Loader';
-import { connect } from 'react-redux';
-import { addFavourite, deleteFavourite } from '../../actions/recipesActions';
 
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
-import axios from 'axios';
 import FavouriteDeleteForm from './FavouriteDeleteForm';
 import FavouriteAddForm from './FavouriteAddForm';
 
@@ -52,14 +45,7 @@ export default function CardComponent(props) {
 
         <CardActions>
           <Link to={'details/' + props.przepis._id}>Przeczytaj wiecej </Link>
-          {/* <form onSubmit={handleFavouriteAdd}>
-            <button type="submit">
-              {props.user && props.user.name ?
-                (props.przepis.ulubione.includes(props.user.name) ?
-                  (<FavoriteIcon></FavoriteIcon>) : (<FavoriteBorder></FavoriteBorder>))
-                : ('')}
-            </button>
-          </form> */}
+
           {props.user && props.user.name ? (props.przepis.ulubione.includes(props.user.name) ?
             <FavouriteDeleteForm username={props.user.name} przepisId={props.przepis._id} /> : <FavouriteAddForm username={props.user.name} przepisId={props.przepis._id} />
           ) : ('')

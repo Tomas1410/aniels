@@ -130,4 +130,4 @@ const mapToStateProps = state => ({
 
 
 
-export default connect(null, { pushRecipe })(RecipesAdd)
+export default connect(mapToStateProps, { pushRecipe })(RecipesAdd)

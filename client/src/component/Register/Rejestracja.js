@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import RejestracjaStyles from './Rejestracja.module.css'
 import { connect } from 'react-redux'
 import { register } from '../../actions/authAction'
-import { clearErrors } from '../../actions/errorAction'
 import { Redirect } from "react-router-dom";
-import { useDispatch } from 'react-redux';
 
-const Rejestracja = ({ register, isAuthenticated, authentcationFailed, clearErrors }) => {
-    const dispatch = useDispatch();
+
+const Rejestracja = ({ register, isAuthenticated, authentcationFailed }) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [msg, setMsg] = useState(null);
+
 
     const handleChangeName = (e) => setName(e.target.value);
     const handleChangeEmail = (e) => setEmail(e.target.value);

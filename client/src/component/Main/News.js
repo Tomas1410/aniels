@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import NewStyle from "./News.module.css";
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
