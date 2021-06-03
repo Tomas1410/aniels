@@ -31,7 +31,7 @@ const detailsRouter = require('./routes/details');
 const generatorRouter = require('./routes/generator');
 const rankingRouter = require('./routes/ranking');
 const ulubioneRouter = require('./routes/ulubione');
-
+const szukajRouter = require('./routes/szukaj');
 
 
 app.use('/recipes', recipeRouter);
@@ -41,7 +41,7 @@ app.use('/details', detailsRouter);
 app.use('/generator', generatorRouter);
 app.use('/ranking', rankingRouter);
 app.use('/ulubione', ulubioneRouter);
-
+app.use('/szukaj', szukajRouter);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'))

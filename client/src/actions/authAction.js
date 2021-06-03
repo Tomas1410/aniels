@@ -49,7 +49,8 @@ export const register = ({ name, email, password }) => dispatch => {
     .catch(err => {
       dispatch(returnErrors(err.data, err.status, 'REGISTER_FAIL'));
       dispatch({
-        type: REGISTER_FAIL
+        type: REGISTER_FAIL,
+        msg: err
       })
     })
 

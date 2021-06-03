@@ -14,6 +14,8 @@ const initialState = {
   isAuthenticated: null,
   isLoading: false,
   user: null,
+  authentcationFailed: false,
+  msg: ''
 };
 export default function (state = initialState, action) {
   switch (action.type) {
@@ -38,11 +40,10 @@ export default function (state = initialState, action) {
         ...action.payload,
         isAuthenticated: true,
         isLoading: false,
+        authentcationFailed: false
       };
     case AUTH_ERROR:
-    case LOGIN_FAIL:
     case LOGOUT_SUCCESS:
-    case REGISTER_FAIL:
       localStorage.removeItem('token');
       return {
         ...state,
@@ -50,6 +51,20 @@ export default function (state = initialState, action) {
         isAuthenticated: false,
         user: null,
         isLoading: false,
+      };
+    case LOGIN_FAIL:
+      localStorage.removeItem('token');
+      return {
+        ...state,
+        authentcationFailed: true
+      };
+    case REGISTER_FAIL:
+      localStorage.removeItem('token');
+      return {
+        ...state,
+        authentcationFailed: true,
+        msg: action.msg
+
       };
     default:
       return state;

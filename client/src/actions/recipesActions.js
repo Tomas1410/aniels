@@ -38,7 +38,8 @@ export const pushRecipe = (recipe) => (dispatch, getState) => {
   axios.post('/recipes/add', recipe, tokenConfig(getState))
     .then(res => dispatch({
       type: PUSH_RECIPE_SUCCESS,
-      payload: res.data
+      payload: res.data,
+      msg: "Added"
     }))
     .catch(err => {
       dispatch(returnErrors(err.data, err.status, 'PUSH_RECIPE_FAILED'));
@@ -59,9 +60,9 @@ export const pushComment = (komentarz, przepisId) => (dispatch, getState) => {
       payload: res.data
     }))
     .catch(err => {
-      dispatch(returnErrors(err.data, err.status, 'PUSH_RECIPE_FAILED'));
       dispatch({
-        type: PUSH_COMMENT_FAILED
+        type: PUSH_COMMENT_FAILED,
+        msg: 'Cannot push comments, error: ' + err
       })
     })
 };

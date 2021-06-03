@@ -24,13 +24,19 @@ function Details({ przepis, fetchRecipe, user, pushComment, komentarz }) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const content = {
-            komentarze: {
-                author: user.name,
-                treść: comment
+        try {
+            const content = {
+                komentarze: {
+                    author: user.name,
+                    treść: comment
+                }
             }
+
+            pushComment(content, przepisId)
         }
-        pushComment(content, przepisId)
+        catch (err) {
+            console.log('cannot push comments, error:', err)
+        }
         // window.location.reload();
     }
 

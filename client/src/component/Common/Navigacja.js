@@ -21,6 +21,7 @@ import { Button, Navbar, Nav, Form, FormControl } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { connect } from 'react-redux'
 import RecipesAdd from '../Recipes/RecipesAdd';
+import Search from '../Search/Search';
 
 
 
@@ -59,10 +60,11 @@ function Navigacja({ auth }) {
           />
           <Link to="/" clasname="logo">Anielska kuchnia</Link>
         </Navbar.Brand>
-        <Form inline action="wyszukiwarka" className="linki2">
+        {/* <Form inline action="wyszukiwarka" className="linki2">
           <FormControl type="text" placeholder="Szukaj przepisów..." className="mr-sm-2" />
           <Button variant="outline-success" type="submit" className="linki3">Szukaj</Button>
-        </Form>
+        </Form> */}
+        <Search />
         <Navbar.Toggle aria-controls="responsive-navbar-nav" data-toggle="collapse" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
@@ -87,7 +89,10 @@ function Navigacja({ auth }) {
         <Route exact path="/">
           <Main />
         </Route>
-        <Route exact path="/details/:przepisId">
+        <Route exact path="/details">
+          <Main />
+        </Route>
+        <Route path="/details/:przepisId">
           <Details />
         </Route>
         <Route exact path="/przepisy">
@@ -117,9 +122,11 @@ function Navigacja({ auth }) {
         <Route path="/wyszukiwarka">
           <Wyszukiwarka />
         </Route>
+
+
       </Switch>
 
-    </Router>
+    </Router >
   )
 }
 

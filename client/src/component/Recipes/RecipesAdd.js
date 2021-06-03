@@ -3,10 +3,11 @@ import RecipesStyles from './RecipesAdd.module.css'
 import Form from 'react-bootstrap/Form'
 import { connect } from 'react-redux'
 import { pushRecipe } from '../../actions/recipesActions'
-const multer = require('multer')
+import { Redirect } from "react-router-dom";
 
 
-const RecipesAdd = ({ pushRecipe }) => {
+
+const RecipesAdd = ({ pushRecipe, msg }) => {
     const [tytul, setTytul] = useState('');
     const [krotki_opis, setOpis] = useState('');
     const [skladniki, setSkladniki] = useState('');
@@ -30,7 +31,6 @@ const RecipesAdd = ({ pushRecipe }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-
         const data = new FormData();
         data.append('tytul', tytul);
         data.append('krotki_opis', krotki_opis);
@@ -111,7 +111,7 @@ const RecipesAdd = ({ pushRecipe }) => {
                         <Form.Control type="range" name="zlozonosc" onChange={handleChangeZlozonosc} />
 
                         <button type="submit" className={RecipesStyles.buttonClass} >Dodaj przepis </button>
-
+                        {msg === 'Added' ? <Redirect to="/" /> : <p>{msg}</p>}
                     </div>
 
                 </form>
@@ -123,4 +123,11 @@ const RecipesAdd = ({ pushRecipe }) => {
         </div>
     )
 }
+
+const mapToStateProps = state => ({
+    msg: state.main.msg
+})
+
+
+
 export default connect(null, { pushRecipe })(RecipesAdd)

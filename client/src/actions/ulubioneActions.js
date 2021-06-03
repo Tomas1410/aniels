@@ -4,7 +4,6 @@ import { tokenConfig } from './authAction'
 
 export const fetchUlubione = (username) => (dispatch, getState) => {
     const body = JSON.stringify({ ulubione: username })
-    console.log('fetchUlubione body:', body)
     dispatch({ type: FETCHING_ULUBIONE, msg: "Fetching begin" })
 
     axios.post('/ulubione', body, tokenConfig(getState))

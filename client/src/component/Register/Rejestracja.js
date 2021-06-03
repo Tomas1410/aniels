@@ -2,13 +2,12 @@ import React, { useState, useEffect } from 'react'
 import RejestracjaStyles from './Rejestracja.module.css'
 import { connect } from 'react-redux'
 import { register } from '../../actions/authAction'
+import { clearErrors } from '../../actions/errorAction'
+import { Redirect } from "react-router-dom";
+import { useDispatch } from 'react-redux';
 
-
-
-const Rejestracja = ({ register }) => {
-
-
-
+const Rejestracja = ({ register, isAuthenticated, authentcationFailed, clearErrors }) => {
+    const dispatch = useDispatch();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -18,6 +17,7 @@ const Rejestracja = ({ register }) => {
     const handleChangeEmail = (e) => setEmail(e.target.value);
     const handleChangePassword = (e) => setPassword(e.target.value);
 
+
     const handleSubmit = (e) => {
         e.preventDefault()
         const user = {
@@ -26,6 +26,8 @@ const Rejestracja = ({ register }) => {
             password
         }
         register(user);
+
+
     }
 
 
@@ -47,6 +49,8 @@ const Rejestracja = ({ register }) => {
 
                     <button type="submit" className={RejestracjaStyles.buttonClass} >Zarejestruj się </button>
 
+                    {authentcationFailed === true ? (<p style={{ 'color': 'red' }}> Nieprawidlowe dane </p>) : ('')}
+                    {isAuthenticated ? (<Redirect to="/" />) : ('')}
                 </div>
 
             </form>
@@ -57,6 +61,7 @@ const Rejestracja = ({ register }) => {
 const mapToStateProps = state => ({
     error: state.erorr,
     isAuthenticated: state.auth.isAuthenticated,
+    authentcationFailed: state.auth.authentcationFailed
 })
 
 export default connect(mapToStateProps, { register })(Rejestracja)

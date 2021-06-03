@@ -25,7 +25,8 @@ export default function (state = initialState, action) {
         case PUSH_RECIPE_SUCCESS:
             return {
                 ...state,
-                przepis: action.payload
+                przepis: action.payload,
+                msg: action.msg
             }
         case PUSH_RECIPE_FAILED:
             return {

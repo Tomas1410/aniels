@@ -18,7 +18,7 @@ const recipeSchema = new Schema({
   skladniki: { type: String, required: true },
   sposob_wykonania: { type: String, required: true },
   komentarze: { type: [comments], required: false },
-  img: { type: String, required: false },
+  img: { type: String, required: true },
   pora: { type: String, required: true },
   typ: { type: String, required: true },
   czas_wykonania: { type: String, required: true },
