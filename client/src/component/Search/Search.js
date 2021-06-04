@@ -5,6 +5,9 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import { Button } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+import { useRouteMatch } from "react-router-dom";
+
+
 const useStyles = makeStyles((theme) => ({
     modal: {
         display: 'flex',
@@ -26,6 +29,7 @@ export default function Search() {
     const [search, setSearch] = useState('')
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
+    const { path, url } = useRouteMatch();
 
     const handleOpen = () => {
         setOpen(true);
@@ -34,6 +38,7 @@ export default function Search() {
         setOpen(false);
         setSearch('');
         setUserDetails([]);
+
     };
 
     const fetchRecipes = (query) => {
@@ -81,9 +86,11 @@ export default function Search() {
                             onChange={(e) => { e.target.value === '' ? (function () { setSearch(''); setUserDetails([]) })() : (fetchRecipes(e.target.value)) }}
                         />
                         <ul className="collection">
-                            {userDetails.map(item => (<Link to={'details/' + item._id} key={item._id} style={{ color: 'black !important', display: 'block' }} onClick={() => {
+                            {/* {history.push(`details/`) + item._id} */}
+                            {userDetails.map(item => (<Link to={'/details/' + item._id} key={item._id} style={{ color: 'black !important', display: 'block' }} onClick={() => {
                                 handleClose();
-                                setSearch('');
+
+
                             }}>{item.tytul}</Link>)
                             )}
                         </ul>

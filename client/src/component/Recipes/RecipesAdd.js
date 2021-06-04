@@ -111,7 +111,7 @@ const RecipesAdd = ({ pushRecipe, msg }) => {
                         <Form.Control type="range" name="zlozonosc" onChange={handleChangeZlozonosc} />
 
                         <button type="submit" className={RecipesStyles.buttonClass} >Dodaj przepis </button>
-                        {msg === 'Added' ? <Redirect to="/" /> : <p>{msg}</p>}
+                        {msg === 'Added' ? <Redirect to="/" /> : <p style={{ color: 'red' }}>{msg}</p>}
                     </div>
 
                 </form>

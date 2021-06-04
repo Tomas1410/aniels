@@ -3,7 +3,7 @@ import {
 } from "./types";
 import axios from "axios";
 
-export const generateRecipe = ({ pora, typ, czas, zlozonosc }) => dispatch => {
+export const generateRecipe = ({ pora, typ, czas }) => dispatch => {
     //headers
     const config = {
         headers: {

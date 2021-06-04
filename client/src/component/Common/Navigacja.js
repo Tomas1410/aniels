@@ -1,7 +1,7 @@
 import React from 'react'
 import './Navbar.css';
 import Main from '../Main/Main'
-import Details from '../Details/Details'
+import RecipeDetails from '../Details/RecipeDetails'
 import Recipes from '../Recipes/Recipes'
 import Login from '../Login/Login'
 import Logout from '../Login/Logout'
@@ -22,6 +22,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { connect } from 'react-redux'
 import RecipesAdd from '../Recipes/RecipesAdd';
 import Search from '../Search/Search';
+import NotFound from './NotFound';
 
 
 
@@ -89,12 +90,10 @@ function Navigacja({ auth }) {
         <Route exact path="/">
           <Main />
         </Route>
-        <Route exact path="/details">
-          <Main />
+        <Route path="/details">
+          <RecipeDetails />
         </Route>
-        <Route path="/details/:przepisId">
-          <Details />
-        </Route>
+
         <Route exact path="/przepisy">
           <Recipes />
         </Route>
@@ -122,7 +121,7 @@ function Navigacja({ auth }) {
         <Route path="/wyszukiwarka">
           <Wyszukiwarka />
         </Route>
-
+        <Route component={NotFound} />
 
       </Switch>
 

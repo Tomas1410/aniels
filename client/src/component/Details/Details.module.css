@@ -1,12 +1,25 @@
 .details{
-    width: 720px;
+    text-align: center;
+}
+.title{
+    font-weight: 900;
+}
+.pic{
+    max-width: 100%;
+    max-height: 100%;
+}
+.imgur{
+    width: 80%;
+    max-width: 700px;
+    height: auto;
     margin: auto;
 }
+.krotkiOpis{
+    max-width: 700px;
+}
+.skladniki{
 
-/* span{
-    padding: 15px;
-    
-} */
-.description{
-    
+}
+.sposobWykonania{
+
 }

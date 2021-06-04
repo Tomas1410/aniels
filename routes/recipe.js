@@ -51,8 +51,9 @@ router.post('/add', [auth, upload.single('img')], (req, res) => {
   const img = req.file.filename;
   const pora = req.body.pora;
   const typ = req.body.typ;
-  const czas_wykonania = req.body.czas_wykonania;
+  const czas_wykonania = req.body.czas_wykonania.replace(' min', '');
   const zlozonosc = req.body.zlozonosc;
+
 
 
   const newRecipe = new Recipe({

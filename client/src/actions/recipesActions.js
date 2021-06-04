@@ -45,7 +45,7 @@ export const pushRecipe = (recipe) => (dispatch, getState) => {
       dispatch(returnErrors(err.data, err.status, 'PUSH_RECIPE_FAILED'));
       dispatch({
         type: PUSH_RECIPE_FAILED,
-        msg: "Couldn't add recipe"
+        msg: "Nie udalo sie dodac przepisu"
       })
     })
 };

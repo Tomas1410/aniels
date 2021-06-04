@@ -39,17 +39,16 @@ function Generator({ generateRecipe, przepisy }) {
         <Form.Group>
           <h2>Generator jadłospisu</h2>
           <h4>Pora</h4>
-          <Form.Control as="select" size="lg" name="pora" onChange={handleChangePora}>
-
-            <option>Dowolne</option>
+          <Form.Control as="select" name="pora" onChange={handleChangePora} >
+            <option selected>Dowolne</option>
             <option>Śniadanie</option>
             <option>Obiad</option>
             <option>Kolacja</option>
           </Form.Control>
           <br />
           <h4>Typ</h4>
-          <Form.Control as="select" name="typ" onChange={handleChangeTyp}>
-            <option>Dowolne</option>
+          <Form.Control as="select" name="typ" onChange={handleChangeTyp} >
+            <option selected>Dowolne</option>
             <option>Mleczne</option>
             <option>Na ostro</option>
             <option>Wegetariańskie</option>
@@ -60,7 +59,7 @@ function Generator({ generateRecipe, przepisy }) {
           <br />
           <h4>Czas</h4>
           <Form.Control size="sm" as="select" name="czas" onChange={handleChangeCzas}>
-            <option>Dowolne</option>
+            <option selected>Dowolne</option>
             <option>10 min</option>
             <option>30 min</option>
             <option>60 min</option>
@@ -77,7 +76,7 @@ function Generator({ generateRecipe, przepisy }) {
           <Grid key={przepis._id} item xl={3} lg={3} md={3} sm={4} xs={12}>
             <CardComponent przepis={przepis} />
           </Grid>
-        )) : ('')}
+        )) : (<p>Nie mamy przepisu o podanych kryteriach</p>)}
       </Grid>
     </React.Fragment>
   )

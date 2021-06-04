@@ -45,17 +45,21 @@ function Details({ przepis, fetchRecipe, user, pushComment, komentarz }) {
 
     return (
         <div className={DetailsStyles.details}>
-            <h1 className="details"> Szczegółowy opis </h1>
-            <h2 className="details_2"> {przepis.tytul}</h2>
-            <CardMedia
-                style={{ height: '250px' }}
+
+            <h2 className={DetailsStyles.title}> {przepis.tytul}</h2>
+            <div className={DetailsStyles.imgur}>
+                <img src={'/assets/' + przepis.img} className={DetailsStyles.pic} />
+            </div>
+
+            {/* <CardMedia
+                className={DetailsStyles.imgur}
                 image={'/assets/' + przepis.img}
                 title="lasagneBolognese"
-            />
-            <span className="description">{przepis.krotki_opis}</span>
+            /> */}
+            <span className={DetailsStyles.krotkiOpis}>{przepis.krotki_opis}</span>
 
             <h1 className="details"> Składniki </h1>
-            <ul>
+            <ul className={DetailsStyles.skladniki}>
                 {przepis.skladniki ? (newLineText(przepis.skladniki)) : ('')}
 
 
@@ -64,12 +68,12 @@ function Details({ przepis, fetchRecipe, user, pushComment, komentarz }) {
             </ul>
 
             <div className="content"><h1>Sposob wykonania</h1></div>
-            <span className="description">{przepis.sposob_wykonania}</span>
+            <span className={DetailsStyles.sposobWykonania}>{przepis.sposob_wykonania}</span>
 
             <div className="comments">
                 <div className="bg-comments"> <h1 className="details"> Komentarze </h1>
                     <form onSubmit={handleSubmit}>
-                        <input type="text" placeholder="Wprowadz swoj komentarz" name="comment" onChange={handleComment} />
+                        <input type="text" placeholder="Wprowadz swoj komentarz" name="comment" onChange={handleComment} required />
                         <button type="submit" className="addComents"> Dodaj komentarz</button>
                     </form>
                 </div>
