@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 import { useParams } from "react-router-dom"
 import Loader from '../Main/Loader'
 
-function Details({ przepis, fetchRecipe, user, pushComment, komentarz }) {
+function Details({ przepis, fetchRecipe, user, pushComment, komentarz, isAuthenticated }) {
 
     const { przepisId } = useParams();
     const [comment, setComment] = useState()
@@ -71,18 +71,19 @@ function Details({ przepis, fetchRecipe, user, pushComment, komentarz }) {
             <span className={DetailsStyles.sposobWykonania}>{przepis.sposob_wykonania}</span>
 
             <div className="comments">
-                <div className="bg-comments"> <h1 className="details"> Komentarze </h1>
+                {isAuthenticated ? (<div className="bg-comments"> <h1 className="details"> Komentarze </h1>
                     <form onSubmit={handleSubmit}>
                         <input type="text" placeholder="Wprowadz swoj komentarz" name="comment" onChange={handleComment} required />
                         <button type="submit" className="addComents"> Dodaj komentarz</button>
                     </form>
-                </div>
+                </div>) : (<p style={{ marginTop: '20px', border: '1px solid black' }}>Aby dodać komentarz musisz sie zalogować</p>)}
+
                 {przepis.komentarze === 0 ? '' : ''}
                 {przepis.komentarze ? (przepis.komentarze.map(comment => <Comment key={comment.id} comment={comment} />)) : (<Loader />)}
 
             </div>
 
-        </div>
+        </div >
 
 
     )
@@ -95,14 +96,16 @@ Details.propTypes = {
     przepisId: PropTypes.string.isRequired,
     user: PropTypes.object,
     pushComment: PropTypes.func,
-    komentarz: PropTypes.object
+    komentarz: PropTypes.object,
+    isAuthenticated: PropTypes.bool
 }
 
 const mapStateToProps = state => {
     return {
         przepis: state.main.przepis,
         user: state.auth.user,
-        komentarz: state.main.dodanyKomentarz
+        komentarz: state.main.dodanyKomentarz,
+        isAuthenticated: state.auth.isAuthenticated
     }
 }
 // const mapDispatchToProps = () => (id, dispatch) => {
