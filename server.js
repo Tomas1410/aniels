@@ -37,7 +37,7 @@ const szukajRouter = require('./routes/szukaj');
 app.use('/recipes', recipeRouter);
 app.use('/rejestracja', userRouter);
 app.use('/Login', authRouter);
-app.use('/details', detailsRouter);
+app.use('/api/details', detailsRouter);
 app.use('/generator', generatorRouter);
 // app.use('/ranking', rankingRouter);
 app.use('/ulubione', ulubioneRouter);

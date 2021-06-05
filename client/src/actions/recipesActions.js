@@ -18,7 +18,7 @@ export const fetchRecipes = () => (dispatch) => {
 };
 
 export const fetchRecipe = (id) => (dispatch) => {
-  fetch("/details/" + id)
+  fetch("/api/details/" + id)
     .then((response) => response.json())
     .then((przepis) =>
       dispatch({
@@ -54,7 +54,7 @@ export const pushComment = (komentarz, przepisId) => (dispatch, getState) => {
 
   const body = JSON.stringify(komentarz)
 
-  axios.patch('/details/' + przepisId + '/add-comment', body, tokenConfig(getState))
+  axios.patch('/api/details/' + przepisId + '/add-comment', body, tokenConfig(getState))
     .then(res => dispatch({
       type: PUSH_COMMENT_SUCCES,
       payload: res.data
