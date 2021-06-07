@@ -5,7 +5,7 @@ import { register } from '../../actions/authAction'
 import { Redirect } from "react-router-dom";
 
 
-const Rejestracja = ({ register, isAuthenticated, authentcationFailed }) => {
+const Rejestracja = ({ register, isAuthenticated, authentcationFailed, error }) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -47,7 +47,7 @@ const Rejestracja = ({ register, isAuthenticated, authentcationFailed }) => {
 
                     <button type="submit" className={RejestracjaStyles.buttonClass} >Zarejestruj się </button>
 
-                    {authentcationFailed === true ? (<p style={{ 'color': 'red' }}> Nieprawidlowe dane </p>) : ('')}
+                    {authentcationFailed === true ? (<p style={{ 'color': 'red' }}> {error.message} </p>) : ('')}
                     {isAuthenticated ? (<Redirect to="/" />) : ('')}
                 </div>
 
@@ -57,9 +57,10 @@ const Rejestracja = ({ register, isAuthenticated, authentcationFailed }) => {
     )
 }
 const mapToStateProps = state => ({
-    error: state.erorr,
+    error: state.error.msg,
     isAuthenticated: state.auth.isAuthenticated,
-    authentcationFailed: state.auth.authentcationFailed
+    authentcationFailed: state.auth.authentcationFailed,
+    msg: state.auth.msg
 })
 
 export default connect(mapToStateProps, { register })(Rejestracja)

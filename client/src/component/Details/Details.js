@@ -7,10 +7,14 @@ import { fetchRecipe, pushComment } from '../../actions/recipesActions'
 import PropTypes from 'prop-types'
 import { useParams } from "react-router-dom"
 import Loader from '../Main/Loader'
+import { Link } from 'react-router-dom';
+import LoginStyles from '../Login/Login.module.css'
+import { useHistory } from "react-router-dom";
 
 function Details({ przepis, fetchRecipe, user, pushComment, komentarz, isAuthenticated }) {
 
     const { przepisId } = useParams();
+    const history = useHistory();
     const [comment, setComment] = useState()
     const handleComment = (e) => setComment(e.target.value)
 
@@ -76,7 +80,17 @@ function Details({ przepis, fetchRecipe, user, pushComment, komentarz, isAuthent
                         <input type="text" placeholder="Wprowadz swoj komentarz" name="comment" onChange={handleComment} required />
                         <button type="submit" className="addComents"> Dodaj komentarz</button>
                     </form>
-                </div>) : (<p style={{ marginTop: '20px', border: '1px solid black' }}>Aby dodać komentarz musisz sie zalogować</p>)}
+                </div>) :
+                    (<React.Fragment>
+                        <div style={{ marginTop: '30px' }}>
+                            <h4 style={{ paddingBottom: '20px' }}>Aby dodać komentarz musisz sie zalogować</h4>
+                            <Link to={'/login'} className={LoginStyles.buttonClass} >Zaloguj sie </Link>
+                            {/* <button onClick={() => history.push('/login')}>Zaloguj sie</button> */}
+
+                        </div>
+
+
+                    </React.Fragment>)}
 
                 {przepis.komentarze === 0 ? '' : ''}
                 {przepis.komentarze ? (przepis.komentarze.map(comment => <Comment key={comment.id} comment={comment} />)) : (<Loader />)}

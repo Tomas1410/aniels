@@ -27,7 +27,7 @@ export default function CardComponent(props) {
   return (
     <React.Fragment>
       <Card className={classes.root}>
-        <CardActionArea>
+        <Link to={'details/' + props.przepis._id} style={{ textDecoration: 'none' }}><CardActionArea>
           <CardMedia
             className={classes.media}
             image={'assets/' + props.przepis.img}
@@ -42,9 +42,11 @@ export default function CardComponent(props) {
             </Typography>
           </CardContent>
         </CardActionArea>
+        </Link>
+
 
         <CardActions>
-          <Link to={'details/' + props.przepis._id}>Przeczytaj wiecej </Link>
+
 
           {props.user && props.user.name ? (props.przepis.ulubione.includes(props.user.name) ?
             <FavouriteDeleteForm username={props.user.name} przepisId={props.przepis._id} /> : <FavouriteAddForm username={props.user.name} przepisId={props.przepis._id} />

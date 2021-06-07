@@ -22,7 +22,7 @@ function Recipes({ przepisy, fetchRecipes, user, isCLicked }) {
     <Grid container spacing={3}>
       {przepisy.map(przepis =>
         <Grid key={przepis._id} item xl={3} lg={3} md={3} sm={4} xs={12}>
-          <CardComponent przepis={przepis} user={user} />
+          <CardComponent przepis={przepis} user={user} key={przepis._id} />
         </Grid>
       )}
     </Grid>) : (<Loader />)

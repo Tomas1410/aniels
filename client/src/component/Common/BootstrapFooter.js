@@ -6,13 +6,13 @@ export default function BootstrapFooter() {
     <Card style={{ 'marginTop': "2rem" }}>
       <Card.Header>Anielska kuchnia</Card.Header>
       <Card.Body>
-        <Card.Title>Sprawdz nasz projekt i wzmocnij naszą aplikację</Card.Title>
+        <Card.Title>Projekt realizowany we wspólpracy z najlepszymi specjalistami oraz z należytą starannością</Card.Title>
         <Card.Text>
-          Kod źródłowy oraz historia powstawania tego projektu dostepna jest w publicznym repozytorium na githubie
+          Tomasz Uryga Damian Wasiak Patryk Wołożonek
         </Card.Text>
-        <a href="https://github.com/JanuszProgramowaniaa/Anielska_Kuchnia">Sprawdz</a>
+
       </Card.Body>
-      <Card.Footer className="text-muted">Essa</Card.Footer>
+      <Card.Footer className="text-muted">Życzymy smacznego</Card.Footer>
     </Card>
   );
 }

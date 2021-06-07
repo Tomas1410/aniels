@@ -1,16 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import LoginStyles from './Login.module.css'
 import img from '../../static/login/maklowicz.jpg'
 import { connect } from 'react-redux'
 import { login } from '../../actions/authAction'
 import { clearErrors } from '../../actions/errorAction'
 import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+
 
 function Login({ login, isAuthenticated, authentcationFailed }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const handleChangeEmail = (e) => setEmail(e.target.value);
   const handleChangePassword = (e) => setPassword(e.target.value);
+  let history = useHistory();
+  const goToPreviousPath = () => {
+    history.goBack()
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,9 +29,9 @@ function Login({ login, isAuthenticated, authentcationFailed }) {
   }
 
 
-
   return (
     <React.Fragment>
+
       <h1 className={LoginStyles.logujSieHamie}>Zaloguj sie</h1>
 
       <div className={LoginStyles.imyczContainer}>
@@ -41,7 +47,8 @@ function Login({ login, isAuthenticated, authentcationFailed }) {
 
           <button type="submit" className={LoginStyles.buttonClass}>Zaloguj sie </button>
           {authentcationFailed === true ? (<p style={{ 'color': 'red' }}> Nieprawidlowe dane </p>) : ('')}
-          {isAuthenticated ? (<Redirect to="/" />) : ('')}
+          {isAuthenticated ? (goToPreviousPath()) : ('')}
+
         </div>
 
       </form>

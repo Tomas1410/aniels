@@ -9,7 +9,7 @@ router.route("/").post((req, res) => {
     return res.status(400).json({ message: "Please enter all fields" });
   }
   User.findOne({ email }).then((user) => {
-    if (user) return res.status(400).json({ message: "User already exists" });
+    if (user) return res.status(400).json({ message: "Użytkownik z takim e-mailem już istnieje" });
     const newUser = new User({
       name,
       email,
