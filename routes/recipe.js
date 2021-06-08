@@ -42,7 +42,7 @@ router.get('/', (req, res) => {
 
 router.post('/add', [auth, upload.single('img')], (req, res) => {
 
-  console.log("request-File:", req.file)
+  // console.log("request-File:", req.file)
 
   const tytul = req.body.tytul;
   const krotki_opis = req.body.krotki_opis;

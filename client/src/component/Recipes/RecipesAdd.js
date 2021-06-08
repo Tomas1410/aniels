@@ -57,42 +57,42 @@ const RecipesAdd = ({ pushRecipe, msg }) => {
                         <div>
                             <label htmlFor="tytul"><b>Tytul</b></label>
                             <br />
-                            <input type="text" placeholder="Nadaj nazwę potrawy" name="tytul" onChange={handleChangeTytul} />
+                            <input type="text" placeholder="Nadaj nazwę potrawy" name="tytul" onChange={handleChangeTytul} required />
                         </div>
                         <div>
                             <label htmlFor="opis"><b>Krotki opis</b></label>
                             <br />
-                            <textarea rows="2" cols="100" placeholder="Wprowadz krotki opis potrawy" name="krotki_opis" onChange={handleChangeOpis} />
+                            <textarea rows="2" cols="100" placeholder="Wprowadz krotki opis potrawy" name="krotki_opis" onChange={handleChangeOpis} required />
                         </div>
 
                         <div>
                             <label htmlFor="skladniki"><b>Skladniki</b></label>
                             <br />
-                            <textarea rows="4" cols="100" placeholder="Składniki na liście oddzielaj enterem, by pojawiały się jeden pod drugim" name="skladniki" onChange={handleChangeSkladniki} />
+                            <textarea rows="4" cols="100" placeholder="Składniki na liście oddzielaj enterem, by pojawiały się jeden pod drugim" name="skladniki" onChange={handleChangeSkladniki} required />
 
                         </div>
                         <div>
                             <label htmlFor="wykonanie"><b>Wykonanie</b></label>
                             <br />
-                            <textarea rows="3" cols="100" placeholder="Opisz sposob przygotwania danej potrawy" name="sposob_wykonania" onChange={handleChangeWykonanie} />
+                            <textarea rows="3" cols="100" placeholder="Opisz sposob przygotwania danej potrawy" name="sposob_wykonania" onChange={handleChangeWykonanie} required />
 
                         </div>
                         <div>
                             <label htmlFor="img"><b>Dodaj zdjecie potrawy</b></label>
                             <br />
-                            <input type="file" placeholder="Wybierz zdjecie" name="img" onChange={handleChangeimg} />
+                            <input type="file" placeholder="Wybierz zdjecie" name="img" onChange={handleChangeimg} required />
                         </div>
 
                         <label htmlFor="pora"><b>Pora w ktorej przygotowujesz potrawe</b></label>
-                        <Form.Control as="select" size="lg" name="pora" onChange={handleChangePora}>
-                            <option>Dowolne</option>
+                        <Form.Control as="select" size="lg" name="pora" onChange={handleChangePora} required>
+                            <option value="">Dowolne</option>
                             <option>Śniadanie</option>
                             <option>Obiad</option>
                             <option>Kolacja</option>
                         </Form.Control>
-                        <label htmlFor="typ"><b>Sprobuj przyporzadkowac danie do danej grupy</b></label>
-                        <Form.Control as="select" name="typ" onChange={handleChangeTyp}>
-                            <option>Dowolne</option>
+                        <label htmlFor="typ"><b>Sprobuj przyporzadkowac danie do danej grupy</b></label >
+                        <Form.Control as="select" name="typ" onChange={handleChangeTyp} required>
+                            <option value="">Dowolne</option>
                             <option>Mleczne</option>
                             <option>Na ostro</option>
                             <option>Wegetariańskie</option>
@@ -101,8 +101,8 @@ const RecipesAdd = ({ pushRecipe, msg }) => {
                         </Form.Control>
                         <br />
                         <label htmlFor="czasWykonania"><b>Wybierz przyblizony czas realizacji potrawy</b></label>
-                        <Form.Control size="sm" as="select" name="czas_wykonania" onChange={handleChangeCzasWykonania}>
-                            <option>Dowolne</option>
+                        <Form.Control size="sm" as="select" name="czas_wykonania" onChange={handleChangeCzasWykonania} required>
+                            <option value="">Dowolne</option>
                             <option>10 min</option>
                             <option>30 min</option>
                             <option>60 min</option>
@@ -111,7 +111,7 @@ const RecipesAdd = ({ pushRecipe, msg }) => {
                         <Form.Control type="range" name="zlozonosc" onChange={handleChangeZlozonosc} />
 
                         <button type="submit" className={RecipesStyles.buttonClass} >Dodaj przepis </button>
-                        {msg === 'Added' ? <Redirect to="/" /> : <p style={{ color: 'red' }}>{msg}</p>}
+                        {msg === 'Added' ? <Redirect to="/przepisy" /> : <p style={{ color: 'red' }}>{msg}</p>}
                     </div>
 
                 </form>

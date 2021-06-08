@@ -13,7 +13,7 @@ const comments = new Schema({
 
 
 const recipeSchema = new Schema({
-  tytul: { type: String, required: true },
+  tytul: { type: String, required: true, unique: true },
   krotki_opis: { type: String, required: true },
   skladniki: { type: String, required: true },
   sposob_wykonania: { type: String, required: true },

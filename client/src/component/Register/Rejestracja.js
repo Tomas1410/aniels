@@ -37,13 +37,13 @@ const Rejestracja = ({ register, isAuthenticated, authentcationFailed, error }) 
 
                 <div className="container">
                     <label htmlFor="name"><b>Nazwa uzytkownika</b></label>
-                    <input type="text" placeholder="Wymyśl swoją nazwę użytkownika" name="name" onChange={handleChangeName} />
+                    <input type="text" placeholder="Wymyśl swoją nazwę użytkownika" name="name" onChange={handleChangeName} required />
 
                     <label htmlFor="email"><b>Email</b></label>
-                    <input type="text" placeholder="Wprowadz swój email" name="email" onChange={handleChangeEmail} />
+                    <input type="email" placeholder="Wprowadz swój email" name="email" onChange={handleChangeEmail} required />
 
                     <label htmlFor="password"><b>Hasło</b></label>
-                    <input type="password" placeholder="Wprowadz haslo" name="password" onChange={handleChangePassword} />
+                    <input type="password" placeholder="Wprowadz haslo" name="password" onChange={handleChangePassword} required />
 
                     <button type="submit" className={RejestracjaStyles.buttonClass} >Zarejestruj się </button>
 

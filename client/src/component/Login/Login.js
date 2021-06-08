@@ -43,10 +43,10 @@ function Login({ login, isAuthenticated, authentcationFailed }) {
       <form onSubmit={handleSubmit}>
         <div class={LoginStyles.container}>
           <label htmlFor="uname"><b>Email</b></label>
-          <input type="text" className={LoginStyles.inputs} placeholder="Wprowadz email" name="email" onChange={handleChangeEmail} />
+          <input type="email" className={LoginStyles.inputs} placeholder="Wprowadz email" name="email" onChange={handleChangeEmail} required />
 
           <label htmlFor="psw"><b>Hasło</b></label>
-          <input type="password" placeholder="Wprowadz haslo" name="psw" onChange={handleChangePassword} />
+          <input type="password" placeholder="Wprowadz haslo" name="psw" onChange={handleChangePassword} required />
 
           <button type="submit" className={LoginStyles.buttonClass}>Zaloguj sie </button>
           {authentcationFailed === true ? (<p style={{ 'color': 'red' }}> Nieprawidlowe dane </p>) : ('')}
