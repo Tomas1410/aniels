@@ -15,7 +15,10 @@ function Login({ login, isAuthenticated, authentcationFailed }) {
   const handleChangePassword = (e) => setPassword(e.target.value);
   let history = useHistory();
   const goToPreviousPath = () => {
-    history.goBack()
+    history.location.state !== undefined ? history.goBack() : history.push('/przepisy')
+    // history.location.state.prevPath.includes('details') ? history.goBack() : history.push('/przepisy')
+    // history.goBack()
+    // console.log(history.location.state.prevPath)
   }
 
   const handleSubmit = (e) => {
@@ -39,8 +42,8 @@ function Login({ login, isAuthenticated, authentcationFailed }) {
       </div>
       <form onSubmit={handleSubmit}>
         <div class={LoginStyles.container}>
-          <label htmlFor="uname"><b>Nazwa użytkownika</b></label>
-          <input type="text" className={LoginStyles.inputs} placeholder="Wprowadz nazwa uzytkownika" name="email" onChange={handleChangeEmail} />
+          <label htmlFor="uname"><b>Email</b></label>
+          <input type="text" className={LoginStyles.inputs} placeholder="Wprowadz email" name="email" onChange={handleChangeEmail} />
 
           <label htmlFor="psw"><b>Hasło</b></label>
           <input type="password" placeholder="Wprowadz haslo" name="psw" onChange={handleChangePassword} />

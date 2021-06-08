@@ -84,7 +84,8 @@ function Details({ przepis, fetchRecipe, user, pushComment, komentarz, isAuthent
                     (<React.Fragment>
                         <div style={{ marginTop: '30px' }}>
                             <h4 style={{ paddingBottom: '20px' }}>Aby dodać komentarz musisz sie zalogować</h4>
-                            <Link to={'/login'} className={LoginStyles.buttonClass} >Zaloguj sie </Link>
+                            <Link to={{ pathname: '/login', state: { prevPath: window.location.pathname } }} className={LoginStyles.buttonClass} >Zaloguj sie </Link>
+                            {/* <Link to={'/login'} className={LoginStyles.buttonClass} >Zaloguj sie </Link> */}
                             {/* <button onClick={() => history.push('/login')}>Zaloguj sie</button> */}
 
                         </div>

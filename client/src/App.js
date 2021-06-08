@@ -6,8 +6,9 @@ import BootstrapFooter from "./component/Common/BootstrapFooter";
 import { Provider } from "react-redux";
 import store from "./store";
 import { loadUser } from "./actions/authAction";
-
 function App() {
+
+
   useEffect(() => store.dispatch(loadUser()), []);
 
   return (
