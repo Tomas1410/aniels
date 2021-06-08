@@ -45,7 +45,7 @@ function Details({ przepis, fetchRecipe, user, pushComment, komentarz, isAuthent
 
     useEffect(() => {
         fetchRecipe(przepisId);
-    }, [komentarz])
+    }, [komentarz, przepisId])
 
     return (
         <div className={DetailsStyles.details}>

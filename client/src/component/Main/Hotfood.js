@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import HotfoodStyles from "./Hotfood.module.css";
 import CardMedia from "@material-ui/core/CardMedia";
+import moment from "moment";
+import 'moment/locale/pl'  // without this line it didn't work
+moment.locale('pl')
 
 export default class Hotfood extends Component {
   constructor(props) {
@@ -13,11 +16,9 @@ export default class Hotfood extends Component {
   }
 
   render() {
-    const date = new Date();
-    const dayMonth = date.getDate();
-    const day = date.getDay();
-    const year = date.getFullYear();
-    const month = date.getMonth();
+
+    const today = moment().utc().format('D MMMM YYYY')
+
 
     const dzien = function (day) {
       if (day === 1) return "Poniedziałek";
@@ -32,8 +33,7 @@ export default class Hotfood extends Component {
       <div className={HotfoodStyles.Container}>
         <div className={HotfoodStyles.Hot}>
           <h1> Danie dnia </h1>
-          <h3>{dzien(day)}</h3>
-          <h3>{dayMonth + "." + month + "." + year}</h3>
+          <h3>{today}</h3>
           <CardMedia
             className={HotfoodStyles.imgStyle}
             image={'assets/' + this.props.recipes.img}

@@ -87,11 +87,14 @@ export default function Search() {
                         />
                         <ul className="collection">
                             {/* {history.push(`details/`) + item._id} */}
+                            {/*  */}
                             {userDetails.map(item => (<Link to={'/details/' + item._id} key={item._id} style={{ color: 'black !important', display: 'block' }} onClick={() => {
                                 handleClose();
 
 
                             }}>{item.tytul}</Link>)
+
+
                             )}
                         </ul>
                     </div>
