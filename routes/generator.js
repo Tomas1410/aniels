@@ -6,7 +6,7 @@ const auth = require('../middleware/auth')
 
 router.post('/', (req, res) => {
 
-    let czas = req.body.czas.replace(' min', '')
+    let czas = req.body.czas ? req.body.czas.replace(' min', '') : ''
     let pora = req.body.pora;
     let typ = req.body.typ;
 
@@ -23,7 +23,7 @@ router.post('/', (req, res) => {
         typ = undefined
     }
     if (czas) {
-        filter.czas = czas;
+        filter.czas_wykonania = czas;
     }
     if (pora) {
         filter.pora = pora;
