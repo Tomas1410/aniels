@@ -1,7 +1,7 @@
 import { GENERATE_FETCH_FAILED, GENERATE_FETCH_SUCCESS } from "../actions/types";
 
 const initialState = {
-    przepisy: [],
+    przepisy: [{},],
     msg: ''
 };
 
