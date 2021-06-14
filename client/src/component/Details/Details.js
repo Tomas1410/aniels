@@ -36,6 +36,7 @@ function Details({ przepis, fetchRecipe, user, pushComment, komentarz, isAuthent
             }
 
             pushComment(content, przepisId)
+
         }
         catch (err) {
             console.log('cannot push comments, error:', err)
@@ -45,6 +46,7 @@ function Details({ przepis, fetchRecipe, user, pushComment, komentarz, isAuthent
 
     useEffect(() => {
         fetchRecipe(przepisId);
+        setComment('')
     }, [komentarz, przepisId])
 
     return (
@@ -77,7 +79,7 @@ function Details({ przepis, fetchRecipe, user, pushComment, komentarz, isAuthent
             <div className="comments">
                 {isAuthenticated ? (<div className="bg-comments"> <h1 className="details"> Komentarze </h1>
                     <form onSubmit={handleSubmit}>
-                        <input type="text" placeholder="Wprowadz swoj komentarz" name="comment" onChange={handleComment} required />
+                        <input type="text" placeholder="Wprowadz swoj komentarz" name="comment" onChange={handleComment} value={comment} required />
                         <button type="submit" className="addComents"> Dodaj komentarz</button>
                     </form>
                 </div>) :
