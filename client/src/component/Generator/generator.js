@@ -72,11 +72,18 @@ function Generator({ generateRecipe, przepisy }) {
         </Form.Group>
       </form>
       <Grid container spacing={2}>
-        {przepisy.length !== 0 ? (przepisy.map(przepis =>
+
+        {przepisy && przepisy[0] && przepisy[0]._id ? (przepisy.map(przepis =>
           <Grid key={przepis._id} item xl={3} lg={3} md={3} sm={4} xs={12}>
             <CardComponent przepis={przepis} />
           </Grid>
-        )) : (<p style={{ margin: '0 auto', color: 'red' }}>Nie mamy przepisu o podanych kryteriach</p>)}
+        )) : (<p style={{ margin: '0 auto', color: 'red' }}>Nie mamy przepisu o podanych kryteriach</p>)}}
+
+        {/* {przepisy.length !== 0 ? (przepisy.map(przepis =>
+          <Grid key={przepis._id} item xl={3} lg={3} md={3} sm={4} xs={12}>
+            <CardComponent przepis={przepis} />
+          </Grid>
+        )) : (<p style={{ margin: '0 auto', color: 'red' }}>Nie mamy przepisu o podanych kryteriach</p>)} */}
       </Grid>
     </React.Fragment>
   )

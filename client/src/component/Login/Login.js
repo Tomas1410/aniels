@@ -16,9 +16,7 @@ function Login({ login, isAuthenticated, authentcationFailed }) {
   let history = useHistory();
   const goToPreviousPath = () => {
     history.location.state !== undefined ? history.goBack() : history.push('/przepisy')
-    // history.location.state.prevPath.includes('details') ? history.goBack() : history.push('/przepisy')
-    // history.goBack()
-    // console.log(history.location.state.prevPath)
+
   }
 
   const handleSubmit = (e) => {

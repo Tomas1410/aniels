@@ -10,7 +10,7 @@ import Loader from '../Main/Loader'
 import { Link } from 'react-router-dom';
 import LoginStyles from '../Login/Login.module.css'
 import { useHistory } from "react-router-dom";
-
+import Table from './Table'
 function Details({ przepis, fetchRecipe, user, pushComment, komentarz, isAuthenticated }) {
 
     const { przepisId } = useParams();
@@ -18,9 +18,10 @@ function Details({ przepis, fetchRecipe, user, pushComment, komentarz, isAuthent
     const [comment, setComment] = useState()
     const handleComment = (e) => setComment(e.target.value)
 
+
     const newLineText = (item) => {
 
-        const newText = item.split('\n').map(str => <li style={{ 'display': 'list-item' }}>{str}</li>);
+        const newText = item.split('\n').map(str => <p>{str}</p>);
 
         return newText;
     }
@@ -50,33 +51,26 @@ function Details({ przepis, fetchRecipe, user, pushComment, komentarz, isAuthent
     }, [komentarz, przepisId])
 
     return (
-        <div className={DetailsStyles.details}>
+        <div className={DetailsStyles.gridContainer}>
 
-            <h2 className={DetailsStyles.title}> {przepis.tytul}</h2>
-            <div className={DetailsStyles.imgur}>
-                <img src={'/assets/' + przepis.img} className={DetailsStyles.pic} />
+            <h1 className={DetailsStyles.title}> {przepis.tytul}</h1>
+
+            <img src={'/assets/' + przepis.img} className={DetailsStyles.pic} />
+
+            <h2 className={DetailsStyles.smallDesc}>{przepis.krotki_opis}</h2>
+
+
+            {przepis.skladniki ? (<Table skladniki={przepis.skladniki} />) : ('')}
+
+
+
+
+
+            <div className={DetailsStyles.bigDesc}>
+                <h1>Sposob wykonania</h1>
+                <p >{przepis.sposob_wykonania ? przepis.sposob_wykonania : ('')}</p>
             </div>
-
-            {/* <CardMedia
-                className={DetailsStyles.imgur}
-                image={'/assets/' + przepis.img}
-                title="lasagneBolognese"
-            /> */}
-            <span className={DetailsStyles.krotkiOpis}>{przepis.krotki_opis}</span>
-
-            <h1 className="details"> Składniki </h1>
-            <ul className={DetailsStyles.skladniki}>
-                {przepis.skladniki ? (newLineText(przepis.skladniki)) : ('')}
-
-
-
-
-            </ul>
-
-            <div className="content"><h1>Sposob wykonania</h1></div>
-            <span className={DetailsStyles.sposobWykonania}>{przepis.sposob_wykonania}</span>
-
-            <div className="comments">
+            <div className={DetailsStyles.komentarze}>
                 {isAuthenticated ? (<div className="bg-comments"> <h1 className="details"> Komentarze </h1>
                     <form onSubmit={handleSubmit}>
                         <input type="text" placeholder="Wprowadz swoj komentarz" name="comment" onChange={handleComment} value={comment} required />
@@ -95,7 +89,7 @@ function Details({ przepis, fetchRecipe, user, pushComment, komentarz, isAuthent
 
                     </React.Fragment>)}
 
-                {przepis.komentarze === 0 ? '' : ''}
+                {przepis.komentarze && przepis.komentarze.length === 0 ? <p style={{ color: 'blue', marginTop: '15px' }}>Przepis nie ma jeszcze żadnego komentarza</p> : ''}
                 {przepis.komentarze ? (przepis.komentarze.map(comment => <Comment key={comment.id} comment={comment} />)) : (<Loader />)}
 
             </div>

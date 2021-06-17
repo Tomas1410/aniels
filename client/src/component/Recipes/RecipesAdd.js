@@ -78,7 +78,7 @@ const RecipesAdd = ({ pushRecipe, msg }) => {
 
                         </div>
                         <div>
-                            <label htmlFor="img"><b>Dodaj zdjecie potrawy</b></label>
+                            <label htmlFor="img"><b>Dodaj zdjecie potrawy(preferowany rozmiar 600x400 lub większe</b></label>
                             <br />
                             <input type="file" placeholder="Wybierz zdjecie" name="img" onChange={handleChangeimg} required />
                         </div>
