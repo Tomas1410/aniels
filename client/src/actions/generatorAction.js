@@ -22,7 +22,7 @@ export const generateRecipe = ({ pora, typ, czas }) => dispatch => {
 
             dispatch({
                 type: GENERATE_FETCH_FAILED,
-                msg: 'Żaden z przepisów nie spełnia takich kryteriów'
+                msg: err.response.data
             })
         })
 

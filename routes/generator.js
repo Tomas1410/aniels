@@ -37,7 +37,9 @@ router.post('/', (req, res) => {
 
     var query = { ...filter }
     Recipe.find(query).select('tytul krotki_opis pora typ czas img')
-        .then((document) => res.json(document))
+        .then((document) => {
+            document.length !== 0 ? res.json({ document, "msg": "founded" }) : res.status(404).json({ "msg": "notfound" })
+        })
         .catch(err => res.status(400).json('Error: ' + err));
 });
 

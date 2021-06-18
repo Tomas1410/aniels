@@ -10,11 +10,13 @@ export default function (state = initialState, action) {
         case GENERATE_FETCH_SUCCESS:
             return {
                 ...state,
-                przepisy: action.payload
+                przepisy: action.payload,
+                msg: ''
             };
         case GENERATE_FETCH_FAILED:
             return {
                 ...state,
+                przepisy: [],
                 msg: action.msg
             };
         default:
